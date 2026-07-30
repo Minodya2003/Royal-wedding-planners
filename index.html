@@ -43,32 +43,6 @@
 
   h1,h2,h3{font-family:'Fraunces','Noto Sans Sinhala',serif;font-weight:500;margin:0;}
 
-  /* ---------- background ambient glows ---------- */
-  .ambient-glow-1 {
-    position: fixed;
-    top: 25%; left: -10vw;
-    width: 60vw; height: 60vw;
-    background: #b8863f;
-    border-radius: 50%;
-    opacity: 0.06;
-    filter: blur(80px);
-    -webkit-filter: blur(80px);
-    z-index: -2;
-    pointer-events: none;
-  }
-  .ambient-glow-2 {
-    position: fixed;
-    bottom: 15%; right: -10vw;
-    width: 60vw; height: 60vw;
-    background: #9c3b4a;
-    border-radius: 50%;
-    opacity: 0.04;
-    filter: blur(80px);
-    -webkit-filter: blur(80px);
-    z-index: -2;
-    pointer-events: none;
-  }
-
   /* ---------- announcement bar ---------- */
   .announcement-bar {
     width: 100%;
@@ -1715,9 +1689,5 @@ function initScrollReveal() {
 // Initial render
 setLanguage('en');
 </script>
-
-<div class="ambient-glow-1"></div>
-<div class="ambient-glow-2"></div>
-
 </body>
 </html>
