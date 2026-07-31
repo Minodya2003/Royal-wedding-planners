@@ -29,6 +29,7 @@
     -webkit-font-smoothing:antialiased;
     position: relative;
     min-height: 100vh;
+    overflow-x: hidden;
   }
   body::before {
     content: '';
@@ -787,6 +788,26 @@
     }
     .nav-logo {
       height: 80px;
+    }
+    /* Fix card overflow on mobile */
+    main {
+      padding: 40px 14px 14px;
+      overflow-x: hidden;
+    }
+    .grid {
+      grid-template-columns: 1fr;
+    }
+    .cat-banner {
+      height: 200px;
+    }
+    /* Hero fallback for mobile — YouTube won't autoplay */
+    .hero-video-bg iframe {
+      display: none;
+    }
+    .hero-video-bg {
+      background-image: url('https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1200&q=80');
+      background-size: cover;
+      background-position: center;
     }
   }
 
