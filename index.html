@@ -1381,41 +1381,55 @@
     .testimonial-card { min-width: 85%; max-width: 85%; }
   }
 
+
   /* ===== MOBILE NAV — glass-header ===== */
   @media (max-width: 768px) {
     .glass-header {
-      padding: 16px 20px;
-    }
-    /* Hide desktop nav links on mobile */
-    .nav-links.left {
-      display: none;
-    }
-    .nav-logo-center {
-      flex: 1;
+      padding: 12px 14px;
     }
     .glass-header-container {
-      justify-content: space-between;
+      gap: 8px;
     }
-    /* Make lang selector smaller on mobile */
+    /* Compact nav links — horizontal scroll */
+    .nav-links.left {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      flex-shrink: 1;
+      min-width: 0;
+    }
+    .nav-links.left::-webkit-scrollbar { display: none; }
+    .nav-links .nav-link {
+      font-size: 9.5px;
+      letter-spacing: 0.12em;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    /* Smaller lang selector */
     .glass-lang {
-      transform: scale(0.88);
+      transform: scale(0.82);
       transform-origin: right center;
+      flex-shrink: 0;
+    }
+    .hamburger-menu {
+      flex-shrink: 0;
     }
   }
 
-  /* ===== MOBILE HERO — fallback image ===== */
+  /* ===== MOBILE HERO — keep video, show fallback behind it ===== */
   @media (max-width: 768px) {
-    .hero-video-bg iframe {
-      display: none !important;
-    }
     .hero-video-bg {
+      /* Fallback photo shows if video can't autoplay */
       background: url('https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1200&q=80') center/cover no-repeat !important;
+    }
+    .hero-video-bg iframe {
+      /* Keep iframe but reduce opacity so fallback photo is visible if video fails */
+      opacity: 0.85;
     }
     header.hero {
       min-height: 55vh;
-    }
-    .sound-toggle-btn {
-      display: none;
     }
   }
 </style>
