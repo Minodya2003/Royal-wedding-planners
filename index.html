@@ -2358,7 +2358,15 @@ function renderCategories() {
       `;
     }).join('');
 
-    const bannerImg = `images/${cat.id}_banner.png`;
+    const realPhotos = {
+      wedding: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1800&q=80",
+      prewedding: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=1800&q=80",
+      private: "https://images.unsplash.com/photo-1530103862679-de40d8db4571?w=1800&q=80",
+      corporate: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1800&q=80",
+      school: "https://images.unsplash.com/photo-1523580494112-07521e8e50b1?w=1800&q=80",
+      special: "https://images.unsplash.com/photo-1533174000255-73132049c0ce?w=1800&q=80"
+    };
+    const bannerImg = realPhotos[cat.id] || `images/${cat.id}_banner.png`;
     const bannerPos = cat.bannerPosition || "center";
     section.innerHTML = `
       <div class="cat-head">
