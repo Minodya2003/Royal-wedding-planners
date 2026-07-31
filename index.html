@@ -1289,6 +1289,84 @@
     color: #000;
   }
   .mt-15 { margin-top: 15px; }
+
+  /* ========== About Us Section ========== */
+  .about-section {
+    position: relative;
+    width: 100%;
+    height: 90vh;
+    min-height: 600px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+  .about-photo-wrapper { position: absolute; inset: 0; }
+  .about-bg-photo {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center;
+    filter: grayscale(25%) brightness(0.65);
+  }
+  .about-card {
+    position: relative; z-index: 2;
+    background: rgba(30, 22, 18, 0.85);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    padding: 56px 48px; max-width: 480px; margin-left: 6%;
+    border-left: 3px solid var(--gold);
+  }
+  .about-star { font-size: 18px; color: var(--gold); margin-bottom: 16px; }
+  .about-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin: 0 0 8px; font-family: 'Inter', sans-serif; }
+  .about-name { font-size: 36px; font-family: 'Fraunces', serif; color: #fff; margin: 0 0 6px; letter-spacing: 0.04em; font-weight: 400; }
+  .about-role { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin: 0 0 28px; font-family: 'Inter', sans-serif; }
+  .about-body { font-size: 14px; line-height: 1.8; color: rgba(255,255,255,0.72); font-style: italic; font-family: 'Fraunces', serif; margin: 0 0 14px; }
+
+  /* ========== Testimonials Section ========== */
+  .testimonials-section { background: #f9f5f0; padding: 100px 5%; text-align: center; }
+  .star-icon { font-size: 18px; color: #999; margin-bottom: 20px; display: block; }
+  .testimonials-title { font-size: clamp(20px, 2.8vw, 34px); font-family: 'Fraunces', serif; color: #1a1a1a; letter-spacing: 0.06em; font-weight: 400; margin: 0 0 18px; text-transform: uppercase; }
+  .testimonials-sub { font-size: 14px; color: #666; font-style: italic; font-family: 'Fraunces', serif; max-width: 700px; margin: 0 auto 60px; line-height: 1.7; }
+  .testimonials-carousel-wrapper { display: flex; align-items: center; justify-content: center; gap: 16px; overflow: hidden; max-width: 1200px; margin: 0 auto; }
+  .testimonials-track { display: flex; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); gap: 32px; }
+  .testimonial-card { min-width: calc(33.33% - 22px); max-width: calc(33.33% - 22px); padding: 0 16px; text-align: center; flex-shrink: 0; }
+  .t-avatar-wrapper { width: 90px; height: 90px; border-radius: 50%; overflow: hidden; margin: 0 auto 16px; border: 2px solid #ddd; }
+  .t-avatar { width: 100%; height: 100%; object-fit: cover; }
+  .t-quote-mark { font-size: 56px; line-height: 0.6; color: #ccc; font-family: 'Fraunces', serif; margin-bottom: 20px; }
+  .t-headline { font-size: 16px; font-style: italic; font-family: 'Fraunces', serif; color: #333; margin: 0 0 18px; }
+  .t-body { font-size: 14px; color: #555; line-height: 1.75; margin: 0 0 24px; }
+  .t-couple { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #999; margin: 0; }
+  .carousel-btn { background: transparent; border: 1px solid #ccc; width: 44px; height: 44px; border-radius: 50%; font-size: 22px; cursor: pointer; color: #555; flex-shrink: 0; transition: all 0.3s; }
+  .carousel-btn:hover { background: #111; color: #fff; border-color: #111; }
+  .testimonial-dots { display: flex; justify-content: center; gap: 8px; margin-top: 40px; }
+  .t-dot { width: 8px; height: 8px; border-radius: 50%; background: #ccc; cursor: pointer; transition: background 0.3s; }
+  .t-dot.active { background: #555; }
+
+  /* ========== FAQ Section ========== */
+  .faq-section { display: flex; min-height: 600px; background: #f9f5f0; }
+  .faq-left { width: 45%; flex-shrink: 0; }
+  .faq-photo-wrapper { position: relative; width: 100%; height: 100%; min-height: 600px; }
+  .faq-photo { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .faq-contact-card { position: absolute; bottom: 40px; left: 30px; right: 30px; background: rgba(255,255,255,0.95); padding: 28px 32px; border: 1px solid #e0dbd5; }
+  .faq-contact-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #555; margin: 0 0 16px; font-weight: 600; }
+  .faq-contact-item { font-size: 14px; color: #333; margin: 0 0 10px; display: flex; align-items: center; gap: 10px; }
+  .faq-right { flex: 1; padding: 80px 5%; }
+  .faq-title { font-size: clamp(26px, 3vw, 40px); font-family: 'Fraunces', serif; color: #1a1a1a; font-weight: 400; letter-spacing: 0.03em; margin: 0 0 16px; text-transform: uppercase; line-height: 1.2; }
+  .faq-sub { font-size: 14px; color: #666; margin: 0 0 40px; font-style: italic; font-family: 'Fraunces', serif; }
+  .faq-list { border-top: 1px solid #ddd; }
+  .faq-item { border-bottom: 1px solid #ddd; }
+  .faq-question { width: 100%; background: transparent; border: none; padding: 20px 0; font-size: 15px; color: #333; display: flex; justify-content: space-between; align-items: center; cursor: pointer; text-align: left; transition: color 0.3s; font-family: 'Inter', sans-serif; }
+  .faq-question:hover { color: #000; }
+  .faq-plus { font-size: 22px; color: #999; transition: transform 0.3s; flex-shrink: 0; margin-left: 12px; }
+  .faq-answer { overflow: hidden; max-height: 0; transition: max-height 0.4s ease; }
+  .faq-answer.open { max-height: 200px; }
+  .faq-answer p { font-size: 14px; color: #555; line-height: 1.75; padding: 0 0 20px; margin: 0; }
+  .faq-item.active .faq-plus { transform: rotate(45deg); color: #333; }
+
+  @media (max-width: 900px) {
+    .faq-section { flex-direction: column; }
+    .faq-left { width: 100%; }
+    .faq-photo-wrapper { min-height: 400px; }
+    .about-card { margin-left: 5%; max-width: 88%; padding: 36px 28px; }
+    .testimonial-card { min-width: 85%; max-width: 85%; }
+  }
 </style>
 </head>
 <body>
@@ -1396,6 +1474,109 @@
 </section>
 
 <main id="main"></main>
+
+<!-- ========== About Us Section ========== -->
+<section class="about-section" id="about">
+  <div class="about-photo-wrapper">
+    <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1400&q=80" alt="Couple - Royal Wedding Planners" class="about-bg-photo">
+  </div>
+  <div class="about-card scroll-reveal">
+    <div class="about-star">✦</div>
+    <p class="about-label">ABOUT US</p>
+    <h2 class="about-name">MINODYA LOSHINI</h2>
+    <p class="about-role">FOUNDER OF ROYAL WEDDING PLANNERS</p>
+    <p class="about-body">Royal Wedding Planners was founded with a passion for creating truly unforgettable weddings. With years of experience, we have had the privilege of serving hundreds of couples across Sri Lanka, ensuring every wedding concludes with a happily ever after.</p>
+    <p class="about-body">Our commitment to excellence is driven by the joy and satisfaction of our clients. We pride ourselves on meticulous attention to detail — whether it's a minor element or a major feature, we ensure every aspect of your special day is flawlessly executed.</p>
+  </div>
+</section>
+
+<!-- ========== Testimonials Section ========== -->
+<section class="testimonials-section scroll-reveal" id="testimonials">
+  <div class="testimonials-header">
+    <div class="star-icon">✦</div>
+    <h2 class="testimonials-title">GLOWING REVIEWS FROM OUR HAPPY COUPLES</h2>
+    <p class="testimonials-sub">Creating unforgettable moments for every couple is what we do best, and as one of the trusted wedding planners in Sri Lanka, it's something we truly take pride in.</p>
+  </div>
+  <div class="testimonials-carousel-wrapper">
+    <button class="carousel-btn prev-btn" onclick="moveTestimonial(-1)">&#8249;</button>
+    <div class="testimonials-track" id="testimonialsTrack">
+      <!-- Card 1 -->
+      <div class="testimonial-card">
+        <div class="t-avatar-wrapper">
+          <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=120&h=120&fit=crop&q=80" alt="Nethmi & Yohan" class="t-avatar">
+        </div>
+        <div class="t-quote-mark">&ldquo;&rdquo;</div>
+        <p class="t-headline">coordinated everything so well</p>
+        <p class="t-body">Our wedding day went smoothly since you guys coordinated everything so well. We highly recommend Royal Wedding Planners. Thank you so much for the friendly and great work. ❤️</p>
+        <p class="t-couple">NETHMI + YOHAN</p>
+      </div>
+      <!-- Card 2 -->
+      <div class="testimonial-card">
+        <div class="t-avatar-wrapper">
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=120&h=120&fit=crop&q=80" alt="Sabira & Sudusinghe" class="t-avatar">
+        </div>
+        <div class="t-quote-mark">&ldquo;&rdquo;</div>
+        <p class="t-headline">went above and beyond</p>
+        <p class="t-body">Having Minodya as my wedding planner and coordinator on both my wedding ceremonies was the best decision I could've made. From the moment we got in touch, I knew I was in good hands. She was very patient and gave great suggestions to things I had doubt about.</p>
+        <p class="t-couple">SABIRA + SUDUSINGHE</p>
+      </div>
+      <!-- Card 3 -->
+      <div class="testimonial-card">
+        <div class="t-avatar-wrapper">
+          <img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=120&h=120&fit=crop&q=80" alt="Venu & Charith" class="t-avatar">
+        </div>
+        <div class="t-quote-mark">&ldquo;&rdquo;</div>
+        <p class="t-headline">exceptional experience</p>
+        <p class="t-body">We had an exceptional experience with Royal Wedding Planners for our wedding, and we can't thank Minodya enough for her outstanding service! From the very beginning, she was incredibly attentive and responsive, ensuring every detail was meticulously planned and executed to perfection.</p>
+        <p class="t-couple">VENU + CHARITH</p>
+      </div>
+    </div>
+    <button class="carousel-btn next-btn" onclick="moveTestimonial(1)">&#8250;</button>
+  </div>
+  <div class="testimonial-dots" id="testimonialDots">
+    <span class="t-dot active" onclick="goToTestimonial(0)"></span>
+    <span class="t-dot" onclick="goToTestimonial(1)"></span>
+    <span class="t-dot" onclick="goToTestimonial(2)"></span>
+  </div>
+</section>
+
+<!-- ========== FAQ Section ========== -->
+<section class="faq-section scroll-reveal" id="faq">
+  <div class="faq-left">
+    <div class="faq-photo-wrapper">
+      <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80" alt="Wedding decoration" class="faq-photo">
+      <div class="faq-contact-card">
+        <p class="faq-contact-label">CONTACT US</p>
+        <p class="faq-contact-item"><span class="faq-contact-icon">📍</span> 76/2/2 Udugampola, Gampaha</p>
+        <p class="faq-contact-item"><span class="faq-contact-icon">✉</span> minodyaj@gmail.com</p>
+        <p class="faq-contact-item"><span class="faq-contact-icon">📞</span> +94 70 263 9292</p>
+      </div>
+    </div>
+  </div>
+  <div class="faq-right">
+    <div class="star-icon">✦</div>
+    <h2 class="faq-title">FREQUENTLY ASKED<br>QUESTIONS</h2>
+    <p class="faq-sub">Here are some answers to some frequently asked questions.</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Can I get a quotation for my wedding? <span class="faq-plus">+</span></button>
+        <div class="faq-answer"><p>Yes! Simply click "Start Planning" and fill in your details. We will get back to you within 24 hours with a free custom quotation tailored to your dream wedding.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">What packages do you offer? <span class="faq-plus">+</span></button>
+        <div class="faq-answer"><p>We offer a wide range of packages — from intimate pre-weddings and engagement shoots to grand 500-guest celebrations, corporate events, and special occasions. Browse our packages section above.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Are you going to be present on the wedding day? <span class="faq-plus">+</span></button>
+        <div class="faq-answer"><p>Absolutely. Our team is present from the very beginning of the setup until the last guest leaves, ensuring every moment runs exactly as planned.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">How will the payments be handled? <span class="faq-plus">+</span></button>
+        <div class="faq-answer"><p>We require a booking deposit to secure your date, followed by milestone payments as we approach your wedding day. Full details are discussed transparently during our initial consultation.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="availability-section" id="availability">
   <div class="calendar-card scroll-reveal">
@@ -2402,8 +2583,47 @@ window.addEventListener('keydown', (e) => {
   }
 });
 
+
 // Initial render
 setLanguage('en');
+
+// ===== Testimonials Carousel =====
+let currentTestimonial = 0;
+const totalTestimonials = 3;
+
+function moveTestimonial(dir) {
+  currentTestimonial = (currentTestimonial + dir + totalTestimonials) % totalTestimonials;
+  updateTestimonialCarousel();
+}
+
+function goToTestimonial(index) {
+  currentTestimonial = index;
+  updateTestimonialCarousel();
+}
+
+function updateTestimonialCarousel() {
+  const track = document.getElementById('testimonialsTrack');
+  const cardWidth = track.querySelector('.testimonial-card').offsetWidth + 32; // 32 = gap
+  track.style.transform = `translateX(-${currentTestimonial * cardWidth}px)`;
+  document.querySelectorAll('.t-dot').forEach((d, i) => d.classList.toggle('active', i === currentTestimonial));
+}
+
+// ===== FAQ Accordion =====
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const answer = item.querySelector('.faq-answer');
+  const isOpen = item.classList.contains('active');
+  // Close all
+  document.querySelectorAll('.faq-item').forEach(i => {
+    i.classList.remove('active');
+    i.querySelector('.faq-answer').classList.remove('open');
+  });
+  // Open clicked if it was closed
+  if (!isOpen) {
+    item.classList.add('active');
+    answer.classList.add('open');
+  }
+}
 </script>
 
 <div class="video-modal" id="videoModal">
