@@ -1159,6 +1159,219 @@
       transform: none;
     }
   }
+  /* ========== Wedding Packages Section ========== */
+  .wedding-packages-section {
+    background: #0a0705;
+    padding: 100px 5%;
+  }
+  .wp-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 70px;
+  }
+  .wp-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #B8863F;
+    margin-bottom: 18px;
+  }
+  .wp-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(28px, 4vw, 46px);
+    font-weight: 300;
+    color: #fff;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin: 0 0 18px;
+  }
+  .wp-sub {
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+    color: rgba(255,255,255,0.55);
+    font-style: italic;
+    line-height: 1.75;
+    margin: 0;
+  }
+  .wp-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+  .wp-card {
+    background: #111;
+    border: 1px solid rgba(255,255,255,0.07);
+    overflow: hidden;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+  .wp-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+  }
+  .wp-card--featured {
+    border-color: rgba(184,134,63,0.4);
+    transform: translateY(-12px);
+    box-shadow: 0 20px 50px rgba(184,134,63,0.15);
+  }
+  .wp-card--featured:hover {
+    transform: translateY(-20px);
+  }
+  .wp-card-img-wrapper {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+  }
+  .wp-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.65);
+    transition: transform 0.5s ease;
+  }
+  .wp-card:hover .wp-card-img {
+    transform: scale(1.05);
+  }
+  .wp-card-badge {
+    position: absolute;
+    bottom: 16px;
+    left: 20px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(6px);
+    padding: 5px 12px;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .wp-card-badge--gold {
+    color: #B8863F;
+    border-color: rgba(184,134,63,0.5);
+    background: rgba(0,0,0,0.7);
+  }
+  .wp-popular-tag {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #fff;
+    background: #B8863F;
+    padding: 5px 12px;
+    font-weight: 600;
+  }
+  .wp-card-body {
+    padding: 32px 28px 36px;
+  }
+  .wp-card-eyebrow {
+    font-family: 'Fraunces', serif;
+    font-size: 12px;
+    font-style: italic;
+    color: rgba(255,255,255,0.4);
+    margin: 0 0 8px;
+  }
+  .wp-card-title {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: #fff;
+    margin: 0 0 10px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .wp-card-price {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 26px;
+    color: #B8863F;
+    margin: 0 0 28px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  .wp-feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 28px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding-top: 20px;
+  }
+  .wp-feature-list li {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding-left: 18px;
+    position: relative;
+  }
+  .wp-feature-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #B8863F;
+    font-size: 11px;
+  }
+  .wp-booking-status {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: #4caf7d;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+  .wp-cta-btn {
+    display: block;
+    text-align: center;
+    padding: 14px 24px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.35);
+    transition: all 0.3s;
+  }
+  .wp-cta-btn:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.7);
+  }
+  .wp-cta-btn--gold {
+    background: #B8863F;
+    border-color: #B8863F;
+    color: #fff;
+  }
+  .wp-cta-btn--gold:hover {
+    background: #9a6e30;
+    border-color: #9a6e30;
+  }
+  @media (max-width: 1024px) {
+    .wp-cards-grid {
+      grid-template-columns: 1fr;
+      max-width: 500px;
+    }
+    .wp-card--featured {
+      transform: translateY(0);
+    }
+    .wp-card--featured:hover {
+      transform: translateY(-8px);
+    }
+  }
+  @media (max-width: 768px) {
+    .wedding-packages-section {
+      padding: 70px 5%;
+    }
+    .wp-header {
+      margin-bottom: 48px;
+    }
+  }
   /* ========== Premium Footer ========== */
   .premium-footer {
     width: 100%;
@@ -1655,6 +1868,99 @@
         <p id="ui-video-desc-3">The magical energy of friends and family coming together to dance, laugh, and celebrate.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ========== Wedding Packages Section ========== -->
+<section class="wedding-packages-section scroll-reveal" id="wedding-packages">
+  <div class="wp-header">
+    <div class="wp-eyebrow">✦ OUR SERVICES</div>
+    <h2 class="wp-title">Wedding Planning Packages</h2>
+    <p class="wp-sub">Every love story is unique. Choose the package that fits your dream day — from elegant day-of coordination to a fully luxurious bespoke experience.</p>
+  </div>
+
+  <div class="wp-cards-grid">
+
+    <!-- Card 1: Essential -->
+    <div class="wp-card">
+      <div class="wp-card-img-wrapper">
+        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80" alt="Essential Wedding Coordination" class="wp-card-img">
+        <div class="wp-card-badge">DAY SERVICE</div>
+      </div>
+      <div class="wp-card-body">
+        <p class="wp-card-eyebrow">For the effortless couple</p>
+        <h3 class="wp-card-title">Essential Coordination</h3>
+        <p class="wp-card-price">Rs. 35,000</p>
+        <ul class="wp-feature-list">
+          <li>Initial consultation</li>
+          <li>Complete wedding day timeline</li>
+          <li>Vendor coordination</li>
+          <li>Guest greeting &amp; guidance</li>
+          <li>Full-day couple support</li>
+          <li>Family coordination</li>
+          <li>On-the-day troubleshooting</li>
+          <li>Management until ceremony ends</li>
+        </ul>
+        <div class="wp-booking-status">BOOKING NOW OPEN</div>
+        <a href="https://wa.me/94702639292?text=Hello%20Royal%20Wedding%20Planners!%20I%20am%20interested%20in%20the%20Essential%20Coordination%20Package%20(Rs.%2035%2C000)." target="_blank" rel="noopener" class="wp-cta-btn">GET A QUOTE</a>
+      </div>
+    </div>
+
+    <!-- Card 2: Premium (featured) -->
+    <div class="wp-card wp-card--featured">
+      <div class="wp-card-img-wrapper">
+        <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&q=80" alt="Premium Wedding Planning" class="wp-card-img">
+        <div class="wp-card-badge wp-card-badge--gold">FULL PLANNING</div>
+        <div class="wp-popular-tag">✦ Most Popular</div>
+      </div>
+      <div class="wp-card-body">
+        <p class="wp-card-eyebrow">For the vision-driven couple</p>
+        <h3 class="wp-card-title">Premium Planning</h3>
+        <p class="wp-card-price">Rs. 85,000</p>
+        <ul class="wp-feature-list">
+          <li>All items from Essential Package</li>
+          <li>Wedding budget planning</li>
+          <li>Venue selection consultation</li>
+          <li>Reception hall &amp; hotel coordination</li>
+          <li>Photographer, DJ, Florist assistance</li>
+          <li>Decoration &amp; color theme planning</li>
+          <li>Seating &amp; table arrangement</li>
+          <li>Ceremony rehearsal coordination</li>
+          <li>Wedding checklist creation</li>
+          <li>Pre-wedding progress meetings</li>
+        </ul>
+        <div class="wp-booking-status">BOOKING NOW OPEN</div>
+        <a href="https://wa.me/94702639292?text=Hello%20Royal%20Wedding%20Planners!%20I%20am%20interested%20in%20the%20Premium%20Wedding%20Planning%20Package%20(Rs.%2085%2C000)." target="_blank" rel="noopener" class="wp-cta-btn wp-cta-btn--gold">GET A QUOTE</a>
+      </div>
+    </div>
+
+    <!-- Card 3: Luxury -->
+    <div class="wp-card">
+      <div class="wp-card-img-wrapper">
+        <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=800&q=80" alt="Luxury Wedding Experience" class="wp-card-img">
+        <div class="wp-card-badge">LUXURY EXPERIENCE</div>
+      </div>
+      <div class="wp-card-body">
+        <p class="wp-card-eyebrow">For the grand celebration</p>
+        <h3 class="wp-card-title">Luxury Experience</h3>
+        <p class="wp-card-price">Rs. 150,000<span style="font-size:14px">+</span></p>
+        <ul class="wp-feature-list">
+          <li>All items from Premium Package</li>
+          <li>End-to-end full event management</li>
+          <li>Unlimited planning meetings</li>
+          <li>Dedicated personal coordinator</li>
+          <li>VIP guest coordination</li>
+          <li>Custom stage &amp; lighting design</li>
+          <li>Live band &amp; DJ coordination</li>
+          <li>Drone videography coordination</li>
+          <li>Luxury vehicle coordination</li>
+          <li>Full event supervision &amp; backup planning</li>
+        </ul>
+        <div class="wp-booking-status">BOOKING NOW OPEN</div>
+        <a href="https://wa.me/94702639292?text=Hello%20Royal%20Wedding%20Planners!%20I%20am%20interested%20in%20the%20Luxury%20Wedding%20Experience%20Package%20(Rs.%20150%2C000%2B)." target="_blank" rel="noopener" class="wp-cta-btn">GET A QUOTE</a>
+      </div>
+    </div>
+
   </div>
 </section>
 
