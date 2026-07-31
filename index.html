@@ -800,15 +800,6 @@
     .cat-banner {
       height: 200px;
     }
-    /* Hero fallback for mobile — YouTube won't autoplay */
-    .hero-video-bg iframe {
-      display: none;
-    }
-    .hero-video-bg {
-      background-image: url('https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1200&q=80');
-      background-size: cover;
-      background-position: center;
-    }
   }
 
   /* ---------- Video Background Hero ---------- */
@@ -1388,6 +1379,44 @@
     .faq-photo-wrapper { min-height: 400px; }
     .about-card { margin-left: 5%; max-width: 88%; padding: 36px 28px; }
     .testimonial-card { min-width: 85%; max-width: 85%; }
+  }
+
+  /* ===== MOBILE NAV — glass-header ===== */
+  @media (max-width: 768px) {
+    .glass-header {
+      padding: 16px 20px;
+    }
+    /* Hide desktop nav links on mobile */
+    .nav-links.left {
+      display: none;
+    }
+    .nav-logo-center {
+      flex: 1;
+    }
+    .glass-header-container {
+      justify-content: space-between;
+    }
+    /* Make lang selector smaller on mobile */
+    .glass-lang {
+      transform: scale(0.88);
+      transform-origin: right center;
+    }
+  }
+
+  /* ===== MOBILE HERO — fallback image ===== */
+  @media (max-width: 768px) {
+    .hero-video-bg iframe {
+      display: none !important;
+    }
+    .hero-video-bg {
+      background: url('https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1200&q=80') center/cover no-repeat !important;
+    }
+    header.hero {
+      min-height: 55vh;
+    }
+    .sound-toggle-btn {
+      display: none;
+    }
   }
 </style>
 </head>
