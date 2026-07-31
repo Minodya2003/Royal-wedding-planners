@@ -810,6 +810,38 @@
   header.hero {
     padding: 80px 24px 90px !important;
   }
+  .sound-toggle-btn {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    z-index: 10;
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 50%;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+  .sound-toggle-btn:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(184, 134, 63, 0.4);
+  }
+  .sound-toggle-btn svg {
+    transition: transform 0.2s ease;
+  }
+  .sound-toggle-btn:active svg {
+    transform: scale(0.9);
+  }
   /* Lighter text in Hero for readable dark background */
   .hero .eyebrow {
     color: #F8D39E !important;
@@ -1118,6 +1150,17 @@
       <span class="line"></span>
     </div>
   </div>
+  <button class="sound-toggle-btn" id="heroSoundBtn" onclick="toggleHeroSound()" aria-label="Toggle Sound">
+    <svg class="mute-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+      <line x1="23" y1="9" x2="17" y2="15"></line>
+      <line x1="17" y1="9" x2="23" y2="15"></line>
+    </svg>
+    <svg class="volume-icon" style="display:none;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+      <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+    </svg>
+  </button>
 </header>
 
 <section class="highlights-section scroll-reveal" id="highlights">
@@ -2108,8 +2151,45 @@ function initScrollReveal() {
   });
 }
 
+/* ---------- Hero Background Video Sound JS ---------- */
+let isHeroMuted = true;
+function toggleHeroSound() {
+  const iframe = document.querySelector('.hero-video-bg iframe');
+  const btn = document.getElementById('heroSoundBtn');
+  if (!iframe || !btn) return;
+  
+  const muteIcon = btn.querySelector('.mute-icon');
+  const volumeIcon = btn.querySelector('.volume-icon');
+  
+  if (isHeroMuted) {
+    iframe.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
+    iframe.contentWindow.postMessage('{"event":"command","func":"setVolume","args":[50]}', '*');
+    muteIcon.style.display = 'none';
+    volumeIcon.style.display = 'block';
+    isHeroMuted = false;
+  } else {
+    iframe.contentWindow.postMessage('{"event":"command","func":"mute","args":""}', '*');
+    muteIcon.style.display = 'block';
+    volumeIcon.style.display = 'none';
+    isHeroMuted = true;
+  }
+}
+
+function muteHeroSound() {
+  if (isHeroMuted) return;
+  const iframe = document.querySelector('.hero-video-bg iframe');
+  const btn = document.getElementById('heroSoundBtn');
+  if (iframe && btn) {
+    iframe.contentWindow.postMessage('{"event":"command","func":"mute","args":""}', '*');
+    btn.querySelector('.mute-icon').style.display = 'block';
+    btn.querySelector('.volume-icon').style.display = 'none';
+    isHeroMuted = true;
+  }
+}
+
 /* ---------- Video Lightbox Modal JS ---------- */
 function openVideoModal(videoId) {
+  muteHeroSound(); // Auto-mute background video if sound is playing
   const modal = document.getElementById('videoModal');
   const container = document.getElementById('modalPlayerContainer');
   
