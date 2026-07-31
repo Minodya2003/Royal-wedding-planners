@@ -1189,64 +1189,83 @@
   .footer-main {
     background: #050505;
     padding: 80px 5% 30px;
+    text-align: left !important;
   }
   .footer-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1.5fr 1.5fr 2fr;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
     gap: 40px;
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
     padding-bottom: 80px;
     border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .footer-left {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    width: 65%;
   }
   .footer-col {
     display: flex;
     flex-direction: column;
   }
   .footer-logo {
-    max-width: 200px;
-    margin-bottom: 20px;
+    height: 70px;
+    width: auto;
+    margin-bottom: 10px;
   }
   .footer-heading {
-    font-size: 14px;
-    letter-spacing: 0.1em;
+    font-size: 13px;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     margin-bottom: 24px;
     color: #fff;
-    font-weight: 400;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
   }
   .footer-link, .footer-text {
     font-size: 14px;
     color: rgba(255,255,255,0.6);
-    margin-bottom: 16px;
+    margin-bottom: 14px;
     text-decoration: none;
     transition: color 0.3s;
+    font-family: 'Inter', sans-serif;
   }
   .footer-link:hover {
     color: var(--gold-soft);
   }
+  .contact-col {
+    padding-top: 40px; /* Align with links */
+  }
+  .footer-right {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+  }
   .footer-bottom {
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
     padding-top: 30px;
-    text-align: center;
+    text-align: left;
     font-size: 12px;
     color: rgba(255,255,255,0.4);
+    font-family: 'Inter', sans-serif;
   }
   
   /* Responsive */
   @media (max-width: 1024px) {
     .footer-grid {
-      grid-template-columns: 1fr 1fr 1fr;
+      flex-direction: column;
+    }
+    .footer-left {
+      width: 100%;
+      flex-wrap: wrap;
     }
     .footer-cta-content {
       flex-direction: column;
       text-align: center;
-    }
-  }
-  @media (max-width: 768px) {
-    .footer-grid {
-      grid-template-columns: 1fr;
     }
   }
   
@@ -2423,34 +2442,33 @@ setLanguage('en');
   
   <div class="footer-main">
     <div class="footer-grid">
-      <!-- Column 1: Logo -->
-      <div class="footer-col brand-col">
-        <img src="images/logo.png" alt="Royal Wedding Planners Logo" class="footer-logo">
+      <!-- Left Content (Logo + Links + Contact) -->
+      <div class="footer-left">
+        <div class="footer-col brand-col">
+          <img src="images/logo.png" alt="Royal Wedding Planners Logo" class="footer-logo">
+        </div>
+        
+        <div class="footer-col links-col">
+          <h4 class="footer-heading">EXPLORE</h4>
+          <a href="#" class="footer-link">Home</a>
+          <a href="#" class="footer-link">Projects</a>
+          <a href="#" class="footer-link">Contact</a>
+        </div>
+        
+        <div class="footer-col contact-col">
+          <a href="mailto:minodyaj@gmail.com" class="footer-link email-link">minodyaj@gmail.com</a>
+          <a href="tel:+94702639292" class="footer-link phone-link">+94 70 263 9292</a>
+        </div>
+        
+        <div class="footer-col address-col">
+          <h4 class="footer-heading">SRI LANKA</h4>
+          <p class="footer-text">76/2/2<br>Udugampola,<br>Gampaha</p>
+        </div>
       </div>
       
-      <!-- Column 2: Explore -->
-      <div class="footer-col links-col">
-        <h4 class="footer-heading">EXPLORE</h4>
-        <a href="#" class="footer-link">Home</a>
-        <a href="#" class="footer-link">Projects</a>
-        <a href="#" class="footer-link">Contact</a>
-      </div>
-      
-      <!-- Column 3: Contact Info -->
-      <div class="footer-col links-col contact-col">
-        <a href="mailto:minodyaj@gmail.com" class="footer-link email-link">minodyaj@gmail.com</a>
-        <a href="tel:+94702639292" class="footer-link phone-link">+94 70 263 9292</a>
-      </div>
-      
-      <!-- Column 4: Location -->
-      <div class="footer-col address-col">
-        <h4 class="footer-heading">SRI LANKA</h4>
-        <p class="footer-text">76/2/2 Udugampola, Gampaha</p>
-      </div>
-      
-      <!-- Column 5: Right CTA -->
-      <div class="footer-col action-col">
-        <h4 class="footer-heading">LET'S TALK ABOUT YOUR FUTURE WEDDING!</h4>
+      <!-- Right Content (CTA) -->
+      <div class="footer-right action-col">
+        <h4 class="footer-heading">LET'S TALK ABOUT YOUR FUTURE<br>WEDDING!</h4>
         <p class="footer-text">Let us know more about your wedding</p>
         <a href="#" class="btn-outline-gold mt-15">START PLANNING</a>
       </div>
