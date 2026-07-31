@@ -1323,21 +1323,7 @@
             frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
   </div>
   <div class="hero-overlay"></div>
-  <div class="hero-card">
-    <div class="eyebrow">
-      <span class="eyebrow-star">✦</span>
-      <span id="ui-eyebrow">Royal Wedding Planners · Sri Lanka</span>
-      <span class="eyebrow-star">✦</span>
-    </div>
-    <h1 class="title" id="ui-title">Packages built for <em>every</em> milestone</h1>
-    <div class="hero-meta" id="ui-hero-meta">Planning · Design · Coordination</div>
-    <p class="hero-sub" id="ui-subtitle">From a whispered proposal to a 500-guest wedding — pick a starting point below, then we shape it around your day.</p>
-    <div class="elegant-divider">
-      <span class="line"></span>
-      <span class="star">✦</span>
-      <span class="line"></span>
-    </div>
-  </div>
+  <!-- Hero card removed -->
   <button class="sound-toggle-btn" id="heroSoundBtn" onclick="toggleHeroSound()" aria-label="Toggle Sound">
     <svg class="mute-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
@@ -2059,10 +2045,10 @@ let observer;
 function updateStaticTexts() {
   const t = UI_TEXT[currentLang];
   // document.getElementById('ui-ticker').textContent = t.ticker;
-  document.getElementById('ui-eyebrow').textContent = t.eyebrow;
-  document.getElementById('ui-title').innerHTML = t.title;
-  document.getElementById('ui-hero-meta').textContent = t.metaText;
-  document.getElementById('ui-subtitle').textContent = t.subtitle;
+  // document.getElementById('ui-eyebrow').textContent = t.eyebrow;
+  // document.getElementById('ui-title').innerHTML = t.title;
+  // document.getElementById('ui-hero-meta').textContent = t.metaText;
+  // document.getElementById('ui-subtitle').textContent = t.subtitle;
   
   // Highlights gallery dynamic texts
   const elBadge = document.getElementById('ui-highlights-badge');
