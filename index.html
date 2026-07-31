@@ -136,7 +136,6 @@
       0 4px 30px rgba(0, 0, 0, 0.01),
       0 30px 70px -30px rgba(120, 80, 40, 0.12);
     position: relative;
-    z-index: 10;
   }
   /* Decorative frame corner marks */
   .hero-card::before {
@@ -813,7 +812,7 @@
     height: 56.25vw; /* 16:9 ratio */
     min-height: 100vh;
     min-width: 177.77vh; /* 16:9 ratio */
-    transform: translate(-50%, -50%) scale(1.35);
+    transform: translate(-50%, -50%) scale(1.35); /* Scale up to remove any cinematic black bars */
     pointer-events: none;
     opacity: 0.8;
   }
@@ -825,21 +824,23 @@
     pointer-events: none;
   }
   .hero-card {
-    background: rgba(40, 26, 21, 0.72) !important; /* Semi-transparent dark background for video readability */
+    background: rgba(40, 26, 21, 0.72) !important;
     border: 1px solid rgba(255, 255, 255, 0.15) !important;
     backdrop-filter: blur(24px) !important;
     -webkit-backdrop-filter: blur(24px) !important;
+    z-index: 3; /* Ensure it appears above the video overlay */
     box-shadow: 
       0 4px 30px rgba(0, 0, 0, 0.22),
       0 30px 70px -30px rgba(0, 0, 0, 0.55) !important;
   }
   header.hero {
-    padding: 40px 24px 60px !important; /* Move content up */
-    min-height: calc(100vh - 120px);
+    padding: 0 !important; /* Remove padding to avoid shrinking content */
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
   }
   .sound-toggle-btn {
     position: absolute;
