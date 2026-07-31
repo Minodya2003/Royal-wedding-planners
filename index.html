@@ -817,16 +817,20 @@
     background: #1e140f;
     overflow: hidden;
   }
-  .hero-video-bg video {
+  .hero-video-bg iframe.desktop-video {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 56.25vw; /* 16:9 ratio */
+    min-height: 100vh;
+    min-width: 177.77vh; /* 16:9 ratio */
+    transform: translate(-50%, -50%) scale(1.35); /* Scale up to remove any cinematic black bars */
     pointer-events: none;
     opacity: 0.8;
+  }
+  .hero-video-bg video.mobile-video {
+    display: none;
   }
   .hero-overlay {
     position: absolute;
@@ -1422,6 +1426,21 @@
     .hero-video-bg {
       background: url('https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1200&q=80') center/cover no-repeat !important;
     }
+    .hero-video-bg iframe.desktop-video {
+      display: none !important;
+    }
+    .hero-video-bg video.mobile-video {
+      display: block !important;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      opacity: 0.8;
+    }
     /* Tighter hero height on mobile */
     header.hero {
       min-height: 60vh !important;
@@ -1462,7 +1481,9 @@
 
 <header class="hero">
   <div class="hero-video-bg">
-    <video autoplay muted loop playsinline id="hero-video" poster="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1200&q=80">
+    <iframe class="desktop-video" src="https://www.youtube.com/embed/EDQ67EL9exM?autoplay=1&mute=1&loop=1&playlist=EDQ67EL9exM&controls=0&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1" 
+            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <video class="mobile-video" autoplay muted loop playsinline id="hero-video" poster="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1200&q=80">
       <source src="images/hero-video.mp4" type="video/mp4">
     </video>
   </div>
@@ -2624,37 +2645,64 @@ function initScrollReveal() {
 /* ---------- Hero Background Video Sound JS ---------- */
 let isHeroMuted = true;
 function toggleHeroSound() {
-  const video = document.getElementById('hero-video');
+  const isMobile = window.innerWidth <= 768;
   const btn = document.getElementById('heroSoundBtn');
-  if (!video || !btn) return;
+  if (!btn) return;
   
   const muteIcon = btn.querySelector('.mute-icon');
   const volumeIcon = btn.querySelector('.volume-icon');
   
-  if (isHeroMuted) {
-    video.muted = false;
-    video.volume = 0.5;
-    muteIcon.style.display = 'none';
-    volumeIcon.style.display = 'block';
-    isHeroMuted = false;
+  if (isMobile) {
+    const video = document.getElementById('hero-video');
+    if (!video) return;
+    if (isHeroMuted) {
+      video.muted = false;
+      video.volume = 0.5;
+      isHeroMuted = false;
+    } else {
+      video.muted = true;
+      isHeroMuted = true;
+    }
   } else {
-    video.muted = true;
+    const iframe = document.querySelector('.hero-video-bg iframe.desktop-video');
+    if (!iframe) return;
+    if (isHeroMuted) {
+      iframe.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
+      iframe.contentWindow.postMessage('{"event":"command","func":"setVolume","args":[50]}', '*');
+      isHeroMuted = false;
+    } else {
+      iframe.contentWindow.postMessage('{"event":"command","func":"mute","args":""}', '*');
+      isHeroMuted = true;
+    }
+  }
+  
+  if (isHeroMuted) {
     muteIcon.style.display = 'block';
     volumeIcon.style.display = 'none';
-    isHeroMuted = true;
+  } else {
+    muteIcon.style.display = 'none';
+    volumeIcon.style.display = 'block';
   }
 }
 
 function muteHeroSound() {
   if (isHeroMuted) return;
-  const video = document.getElementById('hero-video');
+  const isMobile = window.innerWidth <= 768;
   const btn = document.getElementById('heroSoundBtn');
-  if (video && btn) {
-    video.muted = true;
+  
+  if (isMobile) {
+    const video = document.getElementById('hero-video');
+    if (video) video.muted = true;
+  } else {
+    const iframe = document.querySelector('.hero-video-bg iframe.desktop-video');
+    if (iframe) iframe.contentWindow.postMessage('{"event":"command","func":"mute","args":""}', '*');
+  }
+  
+  if (btn) {
     btn.querySelector('.mute-icon').style.display = 'block';
     btn.querySelector('.volume-icon').style.display = 'none';
-    isHeroMuted = true;
   }
+  isHeroMuted = true;
 }
 
 /* ---------- Video Lightbox Modal JS ---------- */
