@@ -1418,18 +1418,26 @@
     }
   }
 
-  /* ===== MOBILE HERO — keep video, show fallback behind it ===== */
+  /* ===== MOBILE HERO — hide YouTube iframe, show clean photo ===== */
   @media (max-width: 768px) {
     .hero-video-bg {
-      /* Fallback photo shows if video can't autoplay */
       background: url('https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1200&q=80') center/cover no-repeat !important;
     }
+    /* Hide iframe completely on mobile — removes YouTube logo & play button */
     .hero-video-bg iframe {
-      /* Keep iframe but reduce opacity so fallback photo is visible if video fails */
-      opacity: 0.85;
+      display: none !important;
     }
+    /* Tighter hero height on mobile */
     header.hero {
-      min-height: 55vh;
+      min-height: 60vh !important;
+    }
+    /* Hide sound button since video is not playing */
+    .sound-toggle-btn {
+      display: none !important;
+    }
+    /* Tighten section gaps */
+    .highlights-section {
+      padding: 48px 16px;
     }
   }
 </style>
