@@ -789,21 +789,23 @@
     min-width: 177.77vh; /* 16:9 ratio */
     transform: translate(-50%, -50%);
     pointer-events: none;
-    opacity: 0.45;
+    opacity: 0.8;
   }
   .hero-overlay {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: radial-gradient(circle at 50% 50%, rgba(59, 42, 34, 0.4) 0%, rgba(30, 20, 15, 0.8) 100%);
+    background: radial-gradient(circle at 50% 50%, rgba(59, 42, 34, 0.15) 0%, rgba(30, 20, 15, 0.5) 100%);
     z-index: 2;
     pointer-events: none;
   }
   .hero-card {
-    background: rgba(45, 30, 25, 0.5) !important; /* Semi-transparent dark background for video readability */
+    background: rgba(40, 26, 21, 0.72) !important; /* Semi-transparent dark background for video readability */
     border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
     box-shadow: 
-      0 4px 30px rgba(0, 0, 0, 0.15),
-      0 30px 70px -30px rgba(0, 0, 0, 0.45) !important;
+      0 4px 30px rgba(0, 0, 0, 0.22),
+      0 30px 70px -30px rgba(0, 0, 0, 0.55) !important;
   }
   header.hero {
     padding: 80px 24px 90px !important;
