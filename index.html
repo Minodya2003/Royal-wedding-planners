@@ -809,6 +809,11 @@
   }
   header.hero {
     padding: 40px 24px 60px !important; /* Move content up */
+    min-height: calc(100vh - 120px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   .sound-toggle-btn {
     position: absolute;
@@ -1131,7 +1136,7 @@
 
 <header class="hero">
   <div class="hero-video-bg">
-    <iframe src="https://www.youtube.com/embed/EDQ67EL9exM?autoplay=1&mute=0&loop=1&playlist=EDQ67EL9exM&controls=0&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1" 
+    <iframe src="https://www.youtube.com/embed/EDQ67EL9exM?autoplay=1&mute=1&loop=1&playlist=EDQ67EL9exM&controls=0&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1" 
             frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
   </div>
   <div class="hero-overlay"></div>
@@ -1151,12 +1156,12 @@
     </div>
   </div>
   <button class="sound-toggle-btn" id="heroSoundBtn" onclick="toggleHeroSound()" aria-label="Toggle Sound">
-    <svg class="mute-icon" style="display:none;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <svg class="mute-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
       <line x1="23" y1="9" x2="17" y2="15"></line>
       <line x1="17" y1="9" x2="23" y2="15"></line>
     </svg>
-    <svg class="volume-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <svg class="volume-icon" style="display:none;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
       <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
     </svg>
@@ -2152,7 +2157,7 @@ function initScrollReveal() {
 }
 
 /* ---------- Hero Background Video Sound JS ---------- */
-let isHeroMuted = false;
+let isHeroMuted = true;
 function toggleHeroSound() {
   const iframe = document.querySelector('.hero-video-bg iframe');
   const btn = document.getElementById('heroSoundBtn');
