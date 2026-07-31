@@ -1393,22 +1393,15 @@
     .glass-header-container {
       gap: 8px;
     }
-    /* Compact nav links — horizontal scroll */
+    /* Hide desktop nav links on mobile to rely on hamburger */
     .nav-links.left {
-      display: flex;
-      gap: 16px;
-      overflow-x: auto;
-      scrollbar-width: none;
-      -webkit-overflow-scrolling: touch;
-      flex-shrink: 1;
-      min-width: 0;
+      display: none;
     }
-    .nav-links.left::-webkit-scrollbar { display: none; }
-    .nav-links .nav-link {
-      font-size: 9.5px;
-      letter-spacing: 0.12em;
-      white-space: nowrap;
-      flex-shrink: 0;
+    .nav-logo-center {
+      flex: 1;
+    }
+    .glass-header-container {
+      justify-content: space-between;
     }
     /* Smaller lang selector */
     .glass-lang {
@@ -1441,9 +1434,60 @@
       pointer-events: none;
       opacity: 0.8;
     }
-    /* Tighter hero height on mobile */
+    /* Full screen hero height on mobile */
     header.hero {
-      min-height: 60vh !important;
+      min-height: 100vh !important;
+    }
+    
+    /* ===== MOBILE FULL SCREEN MENU ===== */
+    .mobile-menu-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(18, 12, 10, 0.98);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      z-index: 2000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transform: translateY(-100%);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      opacity: 0;
+      pointer-events: none;
+    }
+    .mobile-menu-overlay.open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+    .close-menu-btn {
+      position: absolute;
+      top: 24px; right: 24px;
+      background: transparent;
+      border: none;
+      color: var(--gold);
+      font-size: 36px;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .mobile-nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      text-align: center;
+    }
+    .mobile-nav-links a {
+      color: #fff;
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-family: 'Inter', sans-serif;
+    }
+    .mobile-nav-links a:hover {
+      color: var(--gold);
     }
     /* Tighten section gaps */
     .highlights-section {
@@ -1470,20 +1514,32 @@
         <button class="lang-btn active" id="lang-en" onclick="setLanguage('en')">EN</button>
         <button class="lang-btn" id="lang-si" onclick="setLanguage('si')">සිං</button>
       </div>
-      <a href="#availability" class="hamburger-menu" aria-label="Book Now">
+      <button class="hamburger-menu" aria-label="Menu" onclick="toggleMobileMenu()">
         <span class="line"></span>
         <span class="line"></span>
         <span class="line"></span>
-      </a>
+      </button>
     </div>
   </div>
 </nav>
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu-overlay" id="mobileMenu">
+  <button class="close-menu-btn" onclick="toggleMobileMenu()">×</button>
+  <div class="mobile-nav-links">
+    <a href="#" onclick="toggleMobileMenu()">HOME</a>
+    <a href="#about" onclick="toggleMobileMenu()">ABOUT</a>
+    <a href="#main" onclick="toggleMobileMenu()">SERVICES</a>
+    <a href="#highlights" onclick="toggleMobileMenu()">OUR PROJECTS</a>
+    <a href="#availability" onclick="toggleMobileMenu()">START PLANNING</a>
+  </div>
+</div>
 
 <header class="hero">
   <div class="hero-video-bg">
     <iframe class="desktop-video" src="https://www.youtube.com/embed/EDQ67EL9exM?autoplay=1&mute=1&loop=1&playlist=EDQ67EL9exM&controls=0&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1" 
             frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    <video class="mobile-video" autoplay muted loop playsinline id="hero-video" poster="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1200&q=80">
+    <video class="mobile-video" autoplay muted loop playsinline webkit-playsinline id="hero-video" poster="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1200&q=80">
       <source src="images/hero-video.mp4" type="video/mp4">
     </video>
   </div>
@@ -2704,6 +2760,31 @@ function muteHeroSound() {
   }
   isHeroMuted = true;
 }
+
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  if (menu) {
+    menu.classList.toggle('open');
+    if (menu.classList.contains('open')) {
+      document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    } else {
+      document.body.style.overflow = '';
+    }
+  }
+}
+
+// Force mobile video autoplay
+document.addEventListener("DOMContentLoaded", function() {
+  const video = document.getElementById('hero-video');
+  if (video) {
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(function(error) {
+        console.log("Autoplay prevented:", error);
+      });
+    }
+  }
+});
 
 /* ---------- Video Lightbox Modal JS ---------- */
 function openVideoModal(videoId) {
