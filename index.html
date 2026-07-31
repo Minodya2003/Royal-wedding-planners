@@ -763,6 +763,313 @@
       height: 80px;
     }
   }
+
+  /* ---------- Video Background Hero ---------- */
+  .hero-video-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 1;
+    background: #1e140f;
+    overflow: hidden;
+  }
+  .hero-video-bg iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 56.25vw; /* 16:9 ratio */
+    min-height: 100vh;
+    min-width: 177.77vh; /* 16:9 ratio */
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    opacity: 0.45;
+  }
+  .hero-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(59, 42, 34, 0.4) 0%, rgba(30, 20, 15, 0.8) 100%);
+    z-index: 2;
+    pointer-events: none;
+  }
+  .hero-card {
+    background: rgba(45, 30, 25, 0.5) !important; /* Semi-transparent dark background for video readability */
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 
+      0 4px 30px rgba(0, 0, 0, 0.15),
+      0 30px 70px -30px rgba(0, 0, 0, 0.45) !important;
+  }
+  header.hero {
+    padding: 80px 24px 90px !important;
+  }
+  /* Lighter text in Hero for readable dark background */
+  .hero .eyebrow {
+    color: #F8D39E !important;
+  }
+  .hero h1.title {
+    color: #FFFFFF !important;
+  }
+  .hero h1.title em {
+    background: linear-gradient(135deg, #FFE8C5 0%, #F5C582 50%, #D4A360 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+  }
+  .hero .hero-meta {
+    color: #FFE8C5 !important;
+  }
+  .hero .hero-sub {
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+  .hero .elegant-divider .line {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3) 50%, transparent) !important;
+  }
+  .hero .elegant-divider .star {
+    color: #F5C582 !important;
+  }
+
+  /* ---------- Highlights Gallery Section ---------- */
+  .highlights-section {
+    padding: 75px 24px;
+    text-align: center;
+    border-bottom: 1px solid var(--card-line);
+    background: linear-gradient(180deg, var(--ink), var(--ink-2));
+    position: relative;
+    overflow: hidden;
+  }
+  .highlights-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: radial-gradient(var(--card-line) 1px, transparent 1px);
+    background-size: 32px 32px;
+    opacity: 0.22;
+    pointer-events: none;
+  }
+  .highlights-header {
+    max-width: 720px;
+    margin: 0 auto 48px;
+    position: relative;
+    z-index: 2;
+  }
+  .highlights-header h2 {
+    font-size: clamp(28px, 4vw, 38px);
+    color: var(--cream);
+    font-weight: 500;
+    margin: 12px auto 16px;
+    line-height: 1.25;
+  }
+  .highlights-header p {
+    color: var(--cream-dim);
+    font-size: clamp(14.5px, 1.8vw, 16px);
+    line-height: 1.68;
+    margin: 0;
+  }
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+    gap: 28px;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+  .video-card {
+    background: var(--card);
+    border: 1px solid var(--card-line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 4px 24px rgba(120, 80, 40, 0.04);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+  }
+  .video-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--gold);
+    box-shadow: 0 24px 50px -15px rgba(184, 134, 63, 0.24);
+  }
+  .video-thumbnail-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #1e140f;
+    overflow: hidden;
+  }
+  .video-thumbnail-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .video-card:hover .video-thumbnail-wrapper img {
+    transform: scale(1.06);
+  }
+  .video-thumbnail-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0.4));
+    transition: opacity 0.3s ease;
+  }
+  .play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 2px solid rgba(255, 255, 255, 0.85);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-size: 18px;
+    z-index: 3;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  }
+  .video-card:hover .play-btn {
+    background: var(--gold);
+    border-color: var(--gold);
+    transform: translate(-50%, -50%) scale(1.15);
+    box-shadow: 0 15px 30px rgba(184, 134, 63, 0.4);
+  }
+  .play-btn svg {
+    margin-left: 2px;
+    fill: currentColor;
+  }
+  .video-info {
+    padding: 24px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  .video-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .video-info h3 {
+    font-size: 18px;
+    color: var(--cream);
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+  .video-info p {
+    font-size: 13.5px;
+    color: var(--cream-dim);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* ---------- Video Lightbox Modal ---------- */
+  .video-modal {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .video-modal.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .modal-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(30, 20, 15, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .modal-container {
+    position: relative;
+    width: 90%;
+    max-width: 960px;
+    aspect-ratio: 16/9;
+    background: #000;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 40px rgba(184, 134, 63, 0.15);
+    border: 1px solid rgba(184, 134, 63, 0.3);
+    z-index: 1001;
+    transform: scale(0.95);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .video-modal.active .modal-container {
+    transform: scale(1);
+  }
+  .modal-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  .modal-close-btn {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    background: transparent;
+    border: none;
+    color: #FFFFFF;
+    font-size: 32px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease, transform 0.2s ease;
+    outline: none;
+    z-index: 1002;
+  }
+  .modal-close-btn:hover {
+    color: var(--gold);
+    transform: rotate(90deg);
+  }
+  
+  body.modal-open {
+    overflow: hidden;
+  }
+
+  @media (max-width: 991px) {
+    .modal-container {
+      width: 92%;
+    }
+  }
+  @media (max-width: 768px) {
+    .modal-close-btn {
+      top: 15px;
+      right: 15px;
+      background: rgba(0,0,0,0.6);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 22px;
+      color: #FFF;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    .modal-close-btn:hover {
+      transform: none;
+    }
+  }
 </style>
 </head>
 <body>
@@ -789,6 +1096,11 @@
 </nav>
 
 <header class="hero">
+  <div class="hero-video-bg">
+    <iframe src="https://www.youtube.com/embed/BX526D2QbYE?autoplay=1&mute=1&loop=1&playlist=BX526D2QbYE&controls=0&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1" 
+            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+  <div class="hero-overlay"></div>
   <div class="hero-card">
     <div class="eyebrow">
       <span class="eyebrow-star">✦</span>
@@ -805,6 +1117,57 @@
     </div>
   </div>
 </header>
+
+<section class="highlights-section scroll-reveal" id="highlights">
+  <div class="highlights-header">
+    <span class="cta-badge" id="ui-highlights-badge">✦ Cinematic Gallery ✦</span>
+    <h2 id="ui-highlights-title">Dream Weddings in Motion</h2>
+    <p id="ui-highlights-sub">Watch highlights from our beautifully planned celebrations. Get inspired by the details, aesthetics, and moments we bring to life.</p>
+  </div>
+  <div class="highlights-grid">
+    <div class="video-card scroll-reveal" onclick="openVideoModal('BX526D2QbYE')">
+      <div class="video-thumbnail-wrapper">
+        <img src="https://img.youtube.com/vi/BX526D2QbYE/maxresdefault.jpg" alt="Traditional Poruwa Highlights">
+        <button class="play-btn" aria-label="Play video">
+          <svg width="14" height="16" viewBox="0 0 24 28"><path d="M4 2v24l18-12z"/></svg>
+        </button>
+      </div>
+      <div class="video-info">
+        <span class="video-tag" id="ui-video-tag-1">Traditional Poruwa</span>
+        <h3 id="ui-video-title-1">Sacred Vows & Cultural Heritage</h3>
+        <p id="ui-video-desc-1">Capturing the grace and age-old grandeur of a traditional Sri Lankan Poruwa ceremony.</p>
+      </div>
+    </div>
+    
+    <div class="video-card scroll-reveal" onclick="openVideoModal('i4A-7y2Doq0')">
+      <div class="video-thumbnail-wrapper">
+        <img src="https://img.youtube.com/vi/i4A-7y2Doq0/maxresdefault.jpg" alt="Luxury Reception Highlights">
+        <button class="play-btn" aria-label="Play video">
+          <svg width="14" height="16" viewBox="0 0 24 28"><path d="M4 2v24l18-12z"/></svg>
+        </button>
+      </div>
+      <div class="video-info">
+        <span class="video-tag" id="ui-video-tag-2">Luxury Reception</span>
+        <h3 id="ui-video-title-2">Modern Elegance & Grand Ballroom</h3>
+        <p id="ui-video-desc-2">Step inside a breathtaking floral-filled ballroom reception planned with exquisite styling.</p>
+      </div>
+    </div>
+    
+    <div class="video-card scroll-reveal" onclick="openVideoModal('pqpKg8l5cuw')">
+      <div class="video-thumbnail-wrapper">
+        <img src="https://img.youtube.com/vi/pqpKg8l5cuw/maxresdefault.jpg" alt="Celebration Highlights">
+        <button class="play-btn" aria-label="Play video">
+          <svg width="14" height="16" viewBox="0 0 24 28"><path d="M4 2v24l18-12z"/></svg>
+        </button>
+      </div>
+      <div class="video-info">
+        <span class="video-tag" id="ui-video-tag-3">Celebration & Dance</span>
+        <h3 id="ui-video-title-3">Surprise Wedding Dance Highlights</h3>
+        <p id="ui-video-desc-3">The magical energy of friends and family coming together to dance, laugh, and celebrate.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <main id="main"></main>
 
@@ -1394,7 +1757,21 @@ const UI_TEXT = {
     ctaBtnWA: "Chat on WhatsApp",
     footerText: "ROYAL WEDDING PLANNERS — PRICES IN LKR, EXCLUDING VENDOR & VENUE COSTS UNLESS STATED",
     startingFrom: "Starting From",
-    options: "options"
+    options: "options",
+    
+    // Highlights Gallery translation strings
+    highlightsBadge: "✦ Cinematic Gallery ✦",
+    highlightsTitle: "Dream Weddings in Motion",
+    highlightsSub: "Watch highlights from our beautifully planned celebrations. Get inspired by the details, aesthetics, and moments we bring to life.",
+    videoTag1: "Traditional Poruwa",
+    videoTitle1: "Sacred Vows & Cultural Heritage",
+    videoDesc1: "Capturing the grace and age-old grandeur of a traditional Sri Lankan Poruwa ceremony.",
+    videoTag2: "Luxury Reception",
+    videoTitle2: "Modern Elegance & Grand Ballroom",
+    videoDesc2: "Step inside a breathtaking floral-filled ballroom reception planned with exquisite styling.",
+    videoTag3: "Celebration & Dance",
+    videoTitle3: "Surprise Wedding Dance Highlights",
+    videoDesc3: "The magical energy of friends and family coming together to dance, laugh, and celebrate."
   },
   si: {
     ticker: "✦ ශ්‍රී ලංකාවේ විශිෂ්ටතම උත්සව සැලසුම්කරණය — 2026 සහ 2027 සඳහා දැන් වෙන්කරවා ගැනීම් සිදුකෙරේ ✦",
@@ -1417,7 +1794,21 @@ const UI_TEXT = {
     ctaBtnWA: "WhatsApp මඟින් සම්බන්ධ වන්න",
     footerText: "ROYAL WEDDING PLANNERS — මිල ගණන් ශ්‍රී ලංකා රුපියල් (LKR) වලින් වේ. වෙනත් ආකාරයකින් සඳහන් කර නොමැති නම් සැපයුම්කරුවන්ගේ සහ උත්සව ශාලා ගාස්තු ඇතුළත් නොවේ.",
     startingFrom: "ආරම්භක මිල",
-    options: "පැකේජ"
+    options: "පැකේජ",
+    
+    // Highlights Gallery translation strings (Sinhala)
+    highlightsBadge: "✦ සිනමාත්මක ගැලරිය ✦",
+    highlightsTitle: "සිනමා රූප රාමුවෙන් මංගල සිහින",
+    highlightsSub: "අප විසින් සංවිධානය කරන ලද සුවිශේෂී මංගල උත්සවයන්හි සුන්දර අවස්ථාවන් මෙතැනින් නරඹන්න. විස්තර, අලංකරණය සහ සොඳුරුතම මතකයන් තුළින් ආස්වාදයක් ලබාගන්න.",
+    videoTag1: "සාම්ප්‍රදායික පෝරුව",
+    videoTitle1: "පූජනීය චාරිත්‍ර සහ සංස්කෘතික උරුමය",
+    videoDesc1: "ශ්‍රී ලාංකීය සාම්ප්‍රදායික පෝරුව උත්සවයක ඇති අභිමානය සහ චමත්කාරය කැමරා ඇසින්.",
+    videoTag2: "සුඛෝපභෝගී සාදය",
+    videoTitle2: "නූතන සුන්දරත්වය සහ උත්සව ශාලා සැකසුම්",
+    videoDesc2: "නෙත් සිත් ඇදගන්නා මල් සැරසිලිවලින් හැඩවූ සුඛෝපභෝගී මංගල උත්සව ශාලාවක අලංකාරය.",
+    videoTag3: "නර්තන සහ සැමරුම්",
+    videoTitle3: "මනාල යුවළගේ සහ මිතුරන්ගේ විශේෂ නර්තන",
+    videoDesc3: "පවුලේ සාමාජිකයන් සහ මිතුරන් එකතු වී නටමින්, ගයමින් සතුටු වන සොඳුරුතම මොහොත."
   }
 };
 
@@ -1433,6 +1824,35 @@ function updateStaticTexts() {
   document.getElementById('ui-title').innerHTML = t.title;
   document.getElementById('ui-hero-meta').textContent = t.metaText;
   document.getElementById('ui-subtitle').textContent = t.subtitle;
+  
+  // Highlights gallery dynamic texts
+  const elBadge = document.getElementById('ui-highlights-badge');
+  if (elBadge) elBadge.textContent = t.highlightsBadge;
+  const elTitle = document.getElementById('ui-highlights-title');
+  if (elTitle) elTitle.textContent = t.highlightsTitle;
+  const elSub = document.getElementById('ui-highlights-sub');
+  if (elSub) elSub.textContent = t.highlightsSub;
+
+  const elTag1 = document.getElementById('ui-video-tag-1');
+  if (elTag1) elTag1.textContent = t.videoTag1;
+  const elTitle1 = document.getElementById('ui-video-title-1');
+  if (elTitle1) elTitle1.textContent = t.videoTitle1;
+  const elDesc1 = document.getElementById('ui-video-desc-1');
+  if (elDesc1) elDesc1.textContent = t.videoDesc1;
+
+  const elTag2 = document.getElementById('ui-video-tag-2');
+  if (elTag2) elTag2.textContent = t.videoTag2;
+  const elTitle2 = document.getElementById('ui-video-title-2');
+  if (elTitle2) elTitle2.textContent = t.videoTitle2;
+  const elDesc2 = document.getElementById('ui-video-desc-2');
+  if (elDesc2) elDesc2.textContent = t.videoDesc2;
+
+  const elTag3 = document.getElementById('ui-video-tag-3');
+  if (elTag3) elTag3.textContent = t.videoTag3;
+  const elTitle3 = document.getElementById('ui-video-title-3');
+  if (elTitle3) elTitle3.textContent = t.videoTitle3;
+  const elDesc3 = document.getElementById('ui-video-desc-3');
+  if (elDesc3) elDesc3.textContent = t.videoDesc3;
   
   // Calendar dynamic texts
   document.getElementById('ui-calendar-badge').textContent = t.calBadge;
@@ -1686,8 +2106,50 @@ function initScrollReveal() {
   });
 }
 
+/* ---------- Video Lightbox Modal JS ---------- */
+function openVideoModal(videoId) {
+  const modal = document.getElementById('videoModal');
+  const container = document.getElementById('modalPlayerContainer');
+  
+  if (modal && container) {
+    container.innerHTML = `
+      <iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1" 
+              allow="autoplay; encrypted-media" 
+              allowfullscreen></iframe>
+    `;
+    modal.classList.add('active');
+    document.body.classList.add('modal-open');
+  }
+}
+
+function closeVideoModal() {
+  const modal = document.getElementById('videoModal');
+  const container = document.getElementById('modalPlayerContainer');
+  
+  if (modal && container) {
+    container.innerHTML = '';
+    modal.classList.remove('active');
+    document.body.classList.remove('modal-open');
+  }
+}
+
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeVideoModal();
+  }
+});
+
 // Initial render
 setLanguage('en');
 </script>
+
+<div class="video-modal" id="videoModal">
+  <div class="modal-overlay" onclick="closeVideoModal()"></div>
+  <div class="modal-container">
+    <button class="modal-close-btn" onclick="closeVideoModal()" aria-label="Close modal">&times;</button>
+    <div id="modalPlayerContainer" style="width: 100%; height: 100%;"></div>
+  </div>
+</div>
+
 </body>
 </html>
