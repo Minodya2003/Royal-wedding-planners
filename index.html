@@ -1530,6 +1530,36 @@
         <p class="t-body">We had an exceptional experience with Royal Wedding Planners for our wedding, and we can't thank Minodya enough for her outstanding service! From the very beginning, she was incredibly attentive and responsive, ensuring every detail was meticulously planned and executed to perfection.</p>
         <p class="t-couple">VENU + CHARITH</p>
       </div>
+      <!-- Card 4 -->
+      <div class="testimonial-card">
+        <div class="t-avatar-wrapper">
+          <img src="https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?w=120&h=120&fit=crop&q=80" alt="Dilini & Kasun" class="t-avatar">
+        </div>
+        <div class="t-quote-mark">&ldquo;&rdquo;</div>
+        <p class="t-headline">a dream come true</p>
+        <p class="t-body">We could not have asked for a better team to plan our wedding. Every detail was handled with such care and professionalism. Our guests are still talking about how perfect everything was. Truly a dream come true!</p>
+        <p class="t-couple">DILINI + KASUN</p>
+      </div>
+      <!-- Card 5 -->
+      <div class="testimonial-card">
+        <div class="t-avatar-wrapper">
+          <img src="https://images.unsplash.com/photo-1460978812857-470ed1c77af0?w=120&h=120&fit=crop&q=80" alt="Himasha & Nuwan" class="t-avatar">
+        </div>
+        <div class="t-quote-mark">&ldquo;&rdquo;</div>
+        <p class="t-headline">exceeded all our expectations</p>
+        <p class="t-body">Minodya and her team exceeded all our expectations. They turned our vision into reality and handled every last-minute change with grace and a smile. We are so grateful for the magical day they gave us.</p>
+        <p class="t-couple">HIMASHA + NUWAN</p>
+      </div>
+      <!-- Card 6 -->
+      <div class="testimonial-card">
+        <div class="t-avatar-wrapper">
+          <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=120&h=120&fit=crop&q=80" alt="Shanika & Ruwan" class="t-avatar">
+        </div>
+        <div class="t-quote-mark">&ldquo;&rdquo;</div>
+        <p class="t-headline">stress-free and perfect</p>
+        <p class="t-body">From the very first meeting to the last dance, everything was stress-free and absolutely perfect. Royal Wedding Planners took care of everything so we could just enjoy every single moment of our special day.</p>
+        <p class="t-couple">SHANIKA + RUWAN</p>
+      </div>
     </div>
     <button class="carousel-btn next-btn" onclick="moveTestimonial(1)">&#8250;</button>
   </div>
@@ -1537,6 +1567,9 @@
     <span class="t-dot active" onclick="goToTestimonial(0)"></span>
     <span class="t-dot" onclick="goToTestimonial(1)"></span>
     <span class="t-dot" onclick="goToTestimonial(2)"></span>
+    <span class="t-dot" onclick="goToTestimonial(3)"></span>
+    <span class="t-dot" onclick="goToTestimonial(4)"></span>
+    <span class="t-dot" onclick="goToTestimonial(5)"></span>
   </div>
 </section>
 
@@ -2589,7 +2622,7 @@ setLanguage('en');
 
 // ===== Testimonials Carousel =====
 let currentTestimonial = 0;
-const totalTestimonials = 3;
+const totalTestimonials = 6;
 
 function moveTestimonial(dir) {
   currentTestimonial = (currentTestimonial + dir + totalTestimonials) % totalTestimonials;
