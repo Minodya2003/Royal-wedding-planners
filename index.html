@@ -43,20 +43,7 @@
 
   h1,h2,h3{font-family:'Fraunces','Noto Sans Sinhala',serif;font-weight:500;margin:0;}
 
-  /* ---------- announcement bar ---------- */
-  .announcement-bar {
-    width: 100%;
-    background: var(--gold-soft);
-    color: var(--ink);
-    font-family: 'IBM Plex Mono', 'Noto Sans Sinhala', monospace;
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    text-align: center;
-    padding: 5px 16px; /* reduced space */
-    font-weight: 500;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-  }
+  /* ---------- Removed announcement bar ---------- */
 
   a{color:inherit;}
 
@@ -183,35 +170,73 @@
     font-size: 9px;
     opacity: 0.8;
   }
-  /* ---------- top bar ---------- */
-  .top-bar {
-    width: 100%;
-    background: var(--ink);
-    border-bottom: 1px solid var(--card-line);
-  }
-  .top-bar-container {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center; /* Center logo */
-    align-items: center;
-    padding: 6px 24px; /* Minimal padding */
-    width: 100%;
-    position: relative; /* Context for absolute positioning of lang-selector */
-  }
-  .nav-logo {
-    height: 55px; /* Compact logo size */
-    width: auto;
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .nav-logo:hover {
-    transform: scale(1.04);
-  }
-  .top-bar-container .lang-selector {
+  /* ---------- Glass Header ---------- */
+  .glass-header {
     position: absolute;
-    right: 24px;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 24px 40px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 100%);
+  }
+  .glass-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .nav-links.left {
+    display: flex;
+    gap: 32px;
+  }
+  .nav-links .nav-link {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    font-weight: 500;
+    transition: opacity 0.3s;
+    text-transform: uppercase;
+  }
+  .nav-links .nav-link:hover {
+    opacity: 0.7;
+  }
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .glass-lang {
+    position: relative !important;
+    right: 0 !important;
+    transform: none !important;
+    border-color: rgba(255,255,255,0.2) !important;
+    background: rgba(255,255,255,0.1) !important;
+  }
+  .hamburger-menu {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.4);
+    width: 44px;
+    height: 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .hamburger-menu:hover {
+    background: rgba(255,255,255,0.1);
+  }
+  .hamburger-menu .line {
+    width: 18px;
+    height: 1px;
+    background: #FFFFFF;
+    transition: all 0.3s;
   }
   h1.title{
     font-size: clamp(38px, 6.2vw, 62px);
@@ -1109,28 +1134,165 @@
       transform: none;
     }
   }
+  /* ========== Premium Footer ========== */
+  .premium-footer {
+    width: 100%;
+    color: #fff;
+    font-family: 'Noto Sans Sinhala', sans-serif;
+  }
+  
+  /* Tier 1: CTA Banner */
+  .footer-cta-banner {
+    position: relative;
+    padding: 100px 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+  }
+  .footer-cta-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: url('images/gallery-2.jpg') center/cover no-repeat;
+    opacity: 0.3;
+  }
+  .footer-cta-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1400px;
+    gap: 40px;
+  }
+  .cta-text {
+    max-width: 800px;
+  }
+  .cta-title {
+    font-size: 32px;
+    letter-spacing: 0.05em;
+    margin-bottom: 20px;
+    font-weight: 300;
+    text-transform: uppercase;
+  }
+  .cta-desc {
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.7);
+    font-style: italic;
+    font-family: 'Fraunces', serif;
+  }
+  
+  /* Tier 2: Main Footer Body */
+  .footer-main {
+    background: #050505;
+    padding: 80px 5% 30px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr 1.5fr 2fr;
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-bottom: 80px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+  }
+  .footer-logo {
+    max-width: 200px;
+    margin-bottom: 20px;
+  }
+  .footer-heading {
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    color: #fff;
+    font-weight: 400;
+  }
+  .footer-link, .footer-text {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 16px;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .footer-link:hover {
+    color: var(--gold-soft);
+  }
+  .footer-bottom {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-top: 30px;
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+  }
+  
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    .footer-cta-content {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+  @media (max-width: 768px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Button specific for footer */
+  .btn-outline-gold {
+    display: inline-block;
+    padding: 16px 32px;
+    border: 1px solid rgba(255,255,255,0.4);
+    color: #fff;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+  }
+  .btn-outline-gold:hover {
+    background: #fff;
+    color: #000;
+  }
+  .mt-15 { margin-top: 15px; }
 </style>
 </head>
 <body>
 
-<div class="announcement-bar">
-  <div class="ticker-content" id="ui-ticker">✦ Elite Event Planning in Sri Lanka — Now Booking for 2026 & 2027 ✦</div>
-</div>
-
-<div class="top-bar">
-  <div class="top-bar-container">
-    <img src="images/logo.png" alt="Royal Wedding Planners Logo" class="nav-logo">
-    <div class="lang-selector" id="langSelector" data-lang="en">
-      <div class="lang-selector-bg"></div>
-      <button class="lang-btn active" id="lang-en" onclick="setLanguage('en')">EN</button>
-      <button class="lang-btn" id="lang-si" onclick="setLanguage('si')">සිං</button>
+<nav class="glass-header">
+  <div class="glass-header-container">
+    <div class="nav-links left">
+      <a href="#" class="nav-link" id="ui-nav-home">HOME</a>
+      <a href="#" class="nav-link" id="ui-nav-about">ABOUT</a>
+      <a href="#" class="nav-link" id="ui-nav-services">SERVICES</a>
+      <a href="#" class="nav-link" id="ui-nav-projects">OUR PROJECTS</a>
+      <a href="#" class="nav-link" id="ui-nav-planning">START PLANNING</a>
     </div>
-  </div>
-</div>
-
-<nav class="cat-nav">
-  <div class="cat-nav-container">
-    <div class="cat-scroll" id="catNav"></div>
+    <div class="nav-logo-center"></div>
+    <div class="nav-right">
+      <div class="lang-selector glass-lang" id="langSelector" data-lang="en">
+        <div class="lang-selector-bg"></div>
+        <button class="lang-btn active" id="lang-en" onclick="setLanguage('en')">EN</button>
+        <button class="lang-btn" id="lang-si" onclick="setLanguage('si')">සිං</button>
+      </div>
+      <button class="hamburger-menu" aria-label="Menu">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </button>
+    </div>
   </div>
 </nav>
 
@@ -1167,6 +1329,12 @@
     </svg>
   </button>
 </header>
+
+<nav class="cat-nav">
+  <div class="cat-nav-container">
+    <div class="cat-scroll" id="catNav"></div>
+  </div>
+</nav>
 
 <section class="highlights-section scroll-reveal" id="highlights">
   <div class="highlights-header">
@@ -2237,6 +2405,62 @@ setLanguage('en');
     <div id="modalPlayerContainer" style="width: 100%; height: 100%;"></div>
   </div>
 </div>
+
+<!-- ========== Premium Footer ========== -->
+<footer class="premium-footer">
+  <div class="footer-cta-banner">
+    <div class="footer-cta-bg"></div>
+    <div class="footer-cta-content">
+      <div class="cta-text">
+        <h2 class="cta-title">LET US KNOW A LITTLE MORE ABOUT YOUR WEDDING</h2>
+        <p class="cta-desc">Help us make your experience even better let start your wedding planning journey today! Start by giving us a little bit more information on your wedding and we will get back to you as soon as we can</p>
+      </div>
+      <div class="cta-button-container">
+        <a href="#" class="btn-outline-gold">START PLANNING</a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-main">
+    <div class="footer-grid">
+      <!-- Column 1: Logo -->
+      <div class="footer-col brand-col">
+        <img src="images/logo.png" alt="Royal Wedding Planners Logo" class="footer-logo">
+      </div>
+      
+      <!-- Column 2: Explore -->
+      <div class="footer-col links-col">
+        <h4 class="footer-heading">EXPLORE</h4>
+        <a href="#" class="footer-link">Home</a>
+        <a href="#" class="footer-link">Projects</a>
+        <a href="#" class="footer-link">Contact</a>
+      </div>
+      
+      <!-- Column 3: Contact Info -->
+      <div class="footer-col links-col contact-col">
+        <a href="mailto:minodyaj@gmail.com" class="footer-link email-link">minodyaj@gmail.com</a>
+        <a href="tel:+94702639292" class="footer-link phone-link">+94 70 263 9292</a>
+      </div>
+      
+      <!-- Column 4: Location -->
+      <div class="footer-col address-col">
+        <h4 class="footer-heading">SRI LANKA</h4>
+        <p class="footer-text">76/2/2 Udugampola, Gampaha</p>
+      </div>
+      
+      <!-- Column 5: Right CTA -->
+      <div class="footer-col action-col">
+        <h4 class="footer-heading">LET'S TALK ABOUT YOUR FUTURE WEDDING!</h4>
+        <p class="footer-text">Let us know more about your wedding</p>
+        <a href="#" class="btn-outline-gold mt-15">START PLANNING</a>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>Copyright &copy; 2026 Royal Wedding Planners | By Minodya Loshini</p>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
