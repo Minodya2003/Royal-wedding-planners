@@ -2737,5 +2737,18 @@ function toggleFaq(btn) {
   </div>
 </footer>
 
+<script>
+  // On page refresh → go to home (top of page), clear hash
+  (function () {
+    const navType = performance.getEntriesByType('navigation')[0]?.type;
+    if (navType === 'reload' || navType === 'navigate') {
+      if (window.location.hash) {
+        history.replaceState(null, document.title, window.location.pathname);
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }
+    }
+  })();
+</script>
+
 </body>
 </html>
