@@ -136,6 +136,7 @@
       0 4px 30px rgba(0, 0, 0, 0.01),
       0 30px 70px -30px rgba(120, 80, 40, 0.12);
     position: relative;
+    z-index: 10;
   }
   /* Decorative frame corner marks */
   .hero-card::before {
@@ -812,7 +813,7 @@
     height: 56.25vw; /* 16:9 ratio */
     min-height: 100vh;
     min-width: 177.77vh; /* 16:9 ratio */
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(1.35);
     pointer-events: none;
     opacity: 0.8;
   }
