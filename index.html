@@ -1961,7 +1961,7 @@
   </div>
 </section>
 
-<main id="main"></main>
+<main id="main" style="display:none;"></main>
 
 <!-- ========== About Us Section ========== -->
 <section class="about-section" id="about">
@@ -2804,73 +2804,8 @@ function updateStaticTexts() {
 }
 
 function renderCategories() {
-  navEl.innerHTML = '';
-  mainEl.innerHTML = '';
-  
-  DATA.forEach(cat => {
-    const titleText = cat.title[currentLang];
-    const descText = cat.desc[currentLang];
-    const countText = cat.items.length + ' ' + (currentLang === 'en' ? UI_TEXT.en.options : UI_TEXT.si.options);
-    
-    // nav pill
-    const pill = document.createElement('button');
-    pill.className = 'pill';
-    pill.textContent = `${cat.icon} ${titleText.replace(currentLang === 'en' ? ' Packages' : ' පැකේජ', '')}`;
-    pill.onclick = () => {
-      const target = document.getElementById(cat.id);
-      if (target) {
-        target.scrollIntoView({behavior:'smooth', block:'start'});
-      }
-    };
-    navEl.appendChild(pill);
-
-    // category section
-    const section = document.createElement('section');
-    section.className = 'category scroll-reveal';
-    section.id = cat.id;
-    
-    let gridHTML = cat.items.map(pkg => {
-      const tierText = pkg.tier[currentLang];
-      const nameText = pkg.name[currentLang];
-      const priceText = pkg.price[currentLang];
-      const listItems = pkg.list[currentLang].map(li => `<li>${li}</li>`).join('');
-      
-      return `
-        <div class="pkg scroll-reveal">
-          <div class="tier-badge">${tierText}</div>
-          <h3>${nameText}</h3>
-          <div class="price">${UI_TEXT[currentLang].startingFrom}<span class="amount">${priceText}</span></div>
-          <ul>${listItems}</ul>
-        </div>
-      `;
-    }).join('');
-
-    const realPhotos = {
-      wedding: "https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1800&q=80",
-      prewedding: "https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?w=1800&q=80",
-      private: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=1800&q=80",
-      corporate: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1800&q=80",
-      school: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1800&q=80",
-      special: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1800&q=80"
-    };
-    const bannerImg = realPhotos[cat.id] || `images/${cat.id}_banner.png`;
-    const bannerPos = cat.bannerPosition || "center";
-    section.innerHTML = `
-      <div class="cat-head">
-        <span class="icon">${cat.icon}</span>
-        <h2>${titleText}</h2>
-        <span class="cat-count">${countText}</span>
-      </div>
-      <p class="cat-desc">${descText}</p>
-      <div class="cat-banner">
-        <img src="${bannerImg}" alt="${titleText}" style="object-position: ${bannerPos};" loading="lazy">
-      </div>
-      <div class="grid">
-        ${gridHTML}
-      </div>
-    `;
-    mainEl.appendChild(section);
-  });
+  // Packages are now displayed via the static premium cards section above
+  // mainEl.innerHTML = '';
 }
 
 
