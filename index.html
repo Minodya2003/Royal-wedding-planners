@@ -2221,8 +2221,22 @@ window.addEventListener('keydown', (e) => {
   }
 });
 
+// Autoplay sound workaround (Unmute on first user interaction)
+function initAutoplaySound() {
+  const unmuteOnInteract = () => {
+    if (isHeroMuted) {
+      toggleHeroSound();
+    }
+    document.removeEventListener('click', unmuteOnInteract);
+    document.removeEventListener('touchstart', unmuteOnInteract);
+  };
+  document.addEventListener('click', unmuteOnInteract, { once: true });
+  document.addEventListener('touchstart', unmuteOnInteract, { once: true });
+}
+
 // Initial render
 setLanguage('en');
+initAutoplaySound();
 </script>
 
 <div class="video-modal" id="videoModal">
