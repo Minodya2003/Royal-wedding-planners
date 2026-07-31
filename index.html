@@ -2457,7 +2457,7 @@ function renderCalendar() {
     
     const dateKey = `${currentYear}-${currentMonth}-${day}`;
     const dateToCheck = new Date(currentYear, currentMonth, day);
-    const isPast = dateToCheck < today;
+    const isPast = dateToCheck <= today;
     
     if (isPast) {
       dayCell.classList.add('booked');
