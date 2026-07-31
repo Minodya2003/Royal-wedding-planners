@@ -817,15 +817,14 @@
     background: #1e140f;
     overflow: hidden;
   }
-  .hero-video-bg iframe {
+  .hero-video-bg video {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 100vw;
-    height: 56.25vw; /* 16:9 ratio */
-    min-height: 100vh;
-    min-width: 177.77vh; /* 16:9 ratio */
-    transform: translate(-50%, -50%) scale(1.35); /* Scale up to remove any cinematic black bars */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
     pointer-events: none;
     opacity: 0.8;
   }
@@ -1418,22 +1417,14 @@
     }
   }
 
-  /* ===== MOBILE HERO — hide YouTube iframe, show clean photo ===== */
+  /* ===== MOBILE HERO — keep clean photo fallback in case autoplay fails ===== */
   @media (max-width: 768px) {
     .hero-video-bg {
       background: url('https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1200&q=80') center/cover no-repeat !important;
     }
-    /* Hide iframe completely on mobile — removes YouTube logo & play button */
-    .hero-video-bg iframe {
-      display: none !important;
-    }
     /* Tighter hero height on mobile */
     header.hero {
       min-height: 60vh !important;
-    }
-    /* Hide sound button since video is not playing */
-    .sound-toggle-btn {
-      display: none !important;
     }
     /* Tighten section gaps */
     .highlights-section {
@@ -1471,8 +1462,9 @@
 
 <header class="hero">
   <div class="hero-video-bg">
-    <iframe src="https://www.youtube.com/embed/EDQ67EL9exM?autoplay=1&mute=1&loop=1&playlist=EDQ67EL9exM&controls=0&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1" 
-            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <video autoplay muted loop playsinline id="hero-video" poster="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1200&q=80">
+      <source src="images/hero-video.mp4" type="video/mp4">
+    </video>
   </div>
   <div class="hero-overlay"></div>
   <!-- Hero card removed -->
@@ -2632,21 +2624,21 @@ function initScrollReveal() {
 /* ---------- Hero Background Video Sound JS ---------- */
 let isHeroMuted = true;
 function toggleHeroSound() {
-  const iframe = document.querySelector('.hero-video-bg iframe');
+  const video = document.getElementById('hero-video');
   const btn = document.getElementById('heroSoundBtn');
-  if (!iframe || !btn) return;
+  if (!video || !btn) return;
   
   const muteIcon = btn.querySelector('.mute-icon');
   const volumeIcon = btn.querySelector('.volume-icon');
   
   if (isHeroMuted) {
-    iframe.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
-    iframe.contentWindow.postMessage('{"event":"command","func":"setVolume","args":[50]}', '*');
+    video.muted = false;
+    video.volume = 0.5;
     muteIcon.style.display = 'none';
     volumeIcon.style.display = 'block';
     isHeroMuted = false;
   } else {
-    iframe.contentWindow.postMessage('{"event":"command","func":"mute","args":""}', '*');
+    video.muted = true;
     muteIcon.style.display = 'block';
     volumeIcon.style.display = 'none';
     isHeroMuted = true;
@@ -2655,10 +2647,10 @@ function toggleHeroSound() {
 
 function muteHeroSound() {
   if (isHeroMuted) return;
-  const iframe = document.querySelector('.hero-video-bg iframe');
+  const video = document.getElementById('hero-video');
   const btn = document.getElementById('heroSoundBtn');
-  if (iframe && btn) {
-    iframe.contentWindow.postMessage('{"event":"command","func":"mute","args":""}', '*');
+  if (video && btn) {
+    video.muted = true;
     btn.querySelector('.mute-icon').style.display = 'block';
     btn.querySelector('.volume-icon').style.display = 'none';
     isHeroMuted = true;
