@@ -2714,6 +2714,7 @@ function toggleHeroSound() {
     if (isHeroMuted) {
       video.muted = false;
       video.volume = 0.5;
+      video.play().catch(()=>{}); // Explicitly play when unmuted
       isHeroMuted = false;
     } else {
       video.muted = true;
@@ -2724,6 +2725,7 @@ function toggleHeroSound() {
     if (!iframe) return;
     if (isHeroMuted) {
       iframe.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
+      iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
       iframe.contentWindow.postMessage('{"event":"command","func":"setVolume","args":[50]}', '*');
       isHeroMuted = false;
     } else {
@@ -2773,14 +2775,23 @@ function toggleMobileMenu() {
   }
 }
 
-// Force mobile video autoplay
+// Force mobile video autoplay with interaction fallback
 document.addEventListener("DOMContentLoaded", function() {
   const video = document.getElementById('hero-video');
   if (video) {
+    video.muted = true;
     const playPromise = video.play();
     if (playPromise !== undefined) {
       playPromise.catch(function(error) {
         console.log("Autoplay prevented:", error);
+        // Fallback for iOS Low Power Mode: play on first interaction anywhere
+        const playOnInteraction = () => {
+          video.play();
+          document.removeEventListener('touchstart', playOnInteraction);
+          document.removeEventListener('click', playOnInteraction);
+        };
+        document.addEventListener('touchstart', playOnInteraction, {once: true});
+        document.addEventListener('click', playOnInteraction, {once: true});
       });
     }
   }
